@@ -1,0 +1,7 @@
+h1.welcomeCls {
+    color: red;
+}
+ 
+h1#helloWorld {
+    color: blue;
+}

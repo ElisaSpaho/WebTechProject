@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark mb-5">
+        <div class="container">
+            <a class="navbar-brand mb-0 h1" href="index.html">📚 Library Management System</a>
+        </div>
+    </nav>
+ 
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <h2>Member Management</h2>
+            </div>
+            <div class="col-md-4 text-end">
+                <a class="btn btn-primary" href="add-member.html">+ Add Member</a>
+                <button class="btn btn-danger ms-2" id="clearAllBtn">Clear All</button>
+            </div>
+        </div>
+ 
+        <!-- Members Table -->
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0" id="membersTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Member ID</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Membership Type</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-4">
+                                No members added yet. Click "+ Add Member" to get started.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+ 
+</body>
+</html>
