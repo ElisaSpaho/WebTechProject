@@ -1,5 +1,9 @@
 function loadBookInfo() {
-    const bookISBN = localStorage.getItem('bookToDeleteISBN').trim();
+    //optional chaining operator- If localStorage.getItem('bookToDeleteISBN') returns null (because nothing is stored), calling .trim() would throw an error
+    //The ?. checks if the value exists before calling the method.
+    //If it’s null or undefined, it just returns undefined instead of crashing.
+    //If it exists (a string), it runs .trim() as usual.
+    const bookISBN = localStorage.getItem('bookToDeleteISBN')?.trim();
 
     if (!bookISBN) {
         alert('No book selected for deletion');
@@ -17,9 +21,9 @@ function loadBookInfo() {
     }
 
     // Display book info
-    document.getElementById('infoTitle').textContent = book.bookTitle;
-    document.getElementById('infoISBN').textContent = book.bookISBN;
-    document.getElementById('infoAuthor').textContent = book.authorName;
+    $('#infoTitle').text(book.bookTitle);
+    $('#infoISBN').text(book.bookISBN);
+    $('#infoAuthor').text(book.authorName);
 }
 
 function confirmDelete() {
@@ -37,11 +41,8 @@ function confirmDelete() {
     window.location.href = 'index.html';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+$(function() {
     loadBookInfo();
 
-    const deleteBtn = document.getElementById('confirmDeleteBtn');
-    if (deleteBtn) {
-        deleteBtn.addEventListener('click', confirmDelete);
-    }
+    $('#confirmDeleteBtn').on('click', confirmDelete);
 });

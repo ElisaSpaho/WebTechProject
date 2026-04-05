@@ -1,27 +1,27 @@
 function fetchBooksFromLocalStorage() {
     const books   = JSON.parse(localStorage.getItem('books')) || [];
-    const tableBody = document.getElementById('bookstableBody');
+    const $tableBody = $('#bookstableBody');
 
     // Clear the table body
-    tableBody.innerHTML = '';
+    $tableBody.empty();
 
     if (books.length === 0) {
-        tableBody.innerHTML = `
+        $tableBody.html(`
             <tr>
                 <td colspan="7" class="text-center text-muted py-4">
                     No books added yet. Click "+ Add Book" to get started.
                 </td>
             </tr>
-        `;
+        `);
         return;
     }
 
     // Display each member
     books.forEach((book) => {
-        //const statusClass = member.status === 'Active' ? 'text-success' : 'text-danger';
 
+        // Stores the book's ISBN in the table row so we can easily access it later for edit/delete actions
         const row = `
-            <tr>
+            <tr data-isbn="${book.bookISBN}>
                 <td>${book.bookTitle}</td>
                 <td>${book.bookISBN}</td>
                 <td>${book.authorName}</td>
@@ -65,6 +65,6 @@ if (clearAllBtn) {
 }
 
 // On page load
-document.addEventListener('DOMContentLoaded', function() {
+$(function() {
     fetchBooksFromLocalStorage();
 });
