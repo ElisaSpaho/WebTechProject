@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management System</title>
+    <title>Library Management System - Books </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/library.css">
@@ -11,22 +11,18 @@
 <body class="bg-light">
     <nav class="navbar navbar-dark bg-dark mb-5">
         <div class="container">
-            <a class="navbar-brand mb-0 h1" href="index.html">📚 Library Management System</a>
+            <a class="navbar-brand mb-0 h1" href="index.html">Library Management System</a>
         </div>
     </nav>
 
     <div class="container">
         <div class="row mb-4">
 
-            <div>
-                <button id="loadMembersBtn">Load members!</button>
-            </div>
-
             <div class="col-md-8">
-                <h2>Member Management</h2>
+                <h2>Book Management</h2>
             </div>
             <div class="col-md-4 text-end">
-                <a class="btn btn-primary" href="add-member.html">+ Add Member</a>
+                <a class="btn btn-primary" href="add-book.html">+ Add Book</a>
                 <button class="btn btn-danger ms-2" id="clearAllBtn">Clear All</button>
             </div>
         </div>
@@ -37,19 +33,18 @@
                 <table class="table table-hover mb-0" id="membersTable">
                     <thead class="table-dark">
                         <tr>
-                            <th>Name</th>
-                            <th>Member ID</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Membership Type</th>
-                            <th>Status</th>
+                            <th>Title</th>
+                            <th>ISBN</th>
+                            <th>Author</th>
+                            <th>Genre</th>
+                            <th>Price (ALL) </th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody">
+                    <tbody id="bookstableBody">
                         <tr>
                             <td colspan="7" class="text-center text-muted py-4">
-                                No members added yet. Click "+ Add Member" to get started.
+                                No books added yet. Click "+ Add Book" to get started.
                             </td>
                         </tr>
                     </tbody>

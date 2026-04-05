@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Member - Library Management System</title>
+    <title>Delete Book - Library System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-dark bg-dark mb-5">
         <div class="container">
-            <a class="navbar-brand mb-0 h1" href="index.html">📚 Library Management System</a>
+            <a class="navbar-brand mb-0 h1" href="index.html"> Book Management System</a>
         </div>
     </nav>
  
@@ -19,25 +19,30 @@
             <div class="col-md-6">
                 <div class="card border-danger">
                     <div class="card-body p-5">
-                        <h2 class="card-title text-danger mb-3">Delete Member</h2>
-                        <p class="mb-4">Are you sure you want to delete this member?</p>
+                        <h2 class="card-title text-danger mb-3">Delete Book</h2>
+                        <p class="mb-4">Are you sure you want to delete this book?</p>
  
-                        <div class="alert alert-light" id="memberInfo">
-                            <p><strong>Name:</strong> <span id="infoName"></span></p>
-                            <p><strong>Member ID:</strong> <span id="infoId"></span></p>
+                        <div class="alert alert-light" id="bookInfo">
+                            <p><strong>Title:</strong> <span id="infoTitle"></span></p>
+                            <p><strong>ISBN:</strong> <span id="infoISBN"></span></p>
+                            <p><strong>Author:</strong> <span id="infoAuthor"></span></p>
                         </div>
  
                         <p class="text-muted small mb-4">This action cannot be undone.</p>
  
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <a class="btn btn-secondary" href="index.html">Cancel</a>
-                            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Yes, Delete Member</button>
+                            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                                Yes, Delete Book
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
- 
+
+    <!-- Connect JS -->
+    <script src="scripts/delete-book.js"></script>
 </body>
 </html>
