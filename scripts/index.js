@@ -1,17 +1,16 @@
 function fetchBooksFromLocalStorage() {
     const books   = JSON.parse(localStorage.getItem('books')) || [];
-    const $tableBody = $('#bookstableBody');
+    const $container = $('#bookCardsContainer');
+    console.log($container.length);
 
     // Clear the table body
-    $tableBody.empty();
+    $container.empty();
 
     if (books.length === 0) {
-        $tableBody.html(`
-            <tr>
-                <td colspan="7" class="text-center text-muted py-4">
-                    No books added yet. Click "+ Add Book" to get started.
-                </td>
-            </tr>
+        $container.html(`
+            <p class="text-center text-muted py-4">
+                No books added yet. Click "+ Add Book" to get started.
+            </p>
         `);
         return;
     }
@@ -20,23 +19,27 @@ function fetchBooksFromLocalStorage() {
     books.forEach((book) => {
 
         // Stores the book's ISBN in the table row so we can easily access it later for edit/delete actions
-        const row = `
-            <tr data-isbn="${book.bookISBN}>
-                <td>${book.bookTitle}</td>
-                <td>${book.bookISBN}</td>
-                <td>${book.authorName}</td>
-                <td>${book.bookGenre}</td>
-                <td>${book.bookPrice}</td>
-                <td>
-                    <button class="btn btn-sm btn-danger" onclick="editBook('${book.bookISBN}')">Edit</button>
-                    <button class="btn btn-sm btn-danger" onclick="prepareDeleteBook('${book.bookISBN}')">Delete</button>
-                </td>
-            </tr>
+        const card = `
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">${book.bookTitle}</h5>
+                        <p><strong>ISBN:</strong> ${book.bookISBN}</p>
+                        <p><strong>Author:</strong> ${book.authorName}</p>
+                        <p><strong>Genre:</strong> ${book.bookGenre}</p>
+                        <p><strong>Price:</strong> ${book.bookPrice} ALL</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <button class="btn btn-sm btn-primary" onclick="editBook('${book.bookISBN}')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="prepareDeleteBook('${book.bookISBN}')">Delete</button>
+                    </div>
+                </div>
+            </div>
         `;
-        tableBody.innerHTML += row;
+        $container.append(card);
     });
-
 }
+
 
 // Redirect to edit page
 function editBook(bookISBN) {
