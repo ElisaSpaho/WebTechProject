@@ -1,15 +1,15 @@
-function fetchMembersFromLocalStorage() {
-    const members   = JSON.parse(localStorage.getItem('members')) || [];
-    const tableBody = document.getElementById('tableBody');
+function fetchBooksFromLocalStorage() {
+    const books   = JSON.parse(localStorage.getItem('books')) || [];
+    const tableBody = document.getElementById('bookstableBody');
 
     // Clear the table body
     tableBody.innerHTML = '';
 
-    if (members.length === 0) {
+    if (books.length === 0) {
         tableBody.innerHTML = `
             <tr>
                 <td colspan="7" class="text-center text-muted py-4">
-                    No members added yet. Click "+ Add Member" to get started.
+                    No books added yet. Click "+ Add Book" to get started.
                 </td>
             </tr>
         `;
@@ -17,19 +17,19 @@ function fetchMembersFromLocalStorage() {
     }
 
     // Display each member
-    members.forEach((member, index) => {
-        const statusClass = member.status === 'Active' ? 'text-success' : 'text-danger';
+    books.forEach((book) => {
+        //const statusClass = member.status === 'Active' ? 'text-success' : 'text-danger';
 
         const row = `
             <tr>
-                <td>${member.name}</td>
-                <td>${member.id}</td>
-                <td>${member.email}</td>
-                <td>${member.phone}</td>
-                <td>${member.membershipType}</td>
-                <td class="${statusClass}"><strong>${member.status}</strong></td>
+                <td>${book.bookTitle}</td>
+                <td>${book.bookISBN}</td>
+                <td>${book.authorName}</td>
+                <td>${book.bookGenre}</td>
+                <td>${book.bookPrice}</td>
                 <td>
-                    <button class="btn btn-sm btn-danger" onclick="deleteMember(${index})">Delete</button>
+                    <button class="btn btn-sm btn-danger" onclick="editBook('${book.bookISBN}')">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="prepareDeleteBook('${book.bookISBN}')">Delete</button>
                 </td>
             </tr>
         `;
@@ -38,16 +38,33 @@ function fetchMembersFromLocalStorage() {
 
 }
 
-let loadMembersBtn = document.getElementById('loadMembersBtn');
-if (loadMembersBtn) {
-    loadMembersBtn.addEventListener('click', fetchMembersFromLocalStorage);
-} else {
-    console.error('Load Members button not found!');
+// Redirect to edit page
+function editBook(bookISBN) {
+    localStorage.setItem('bookToEditISBN', bookISBN);
+    window.location.href = 'edit-book.html';
 }
 
+// redirect to delete book page
+function prepareDeleteBook(bookISBN) {
+    localStorage.setItem('bookToDeleteISBN', bookISBN);
+    window.location.href = 'delete-book.html';
+}
+
+// Clear all books - might remove ( why would all books get deleted?)
+function clearAllBooks() {
+    if (confirm("Are you sure you want to delete ALL books?")) {
+        localStorage.removeItem('books');
+        fetchBooksFromLocalStorage();
+    }
+}
+
+// event listener for Clear All button
+const clearAllBtn = document.getElementById('clearAllBtn');
+if (clearAllBtn) {
+    clearAllBtn.addEventListener('click', clearAllBooks);
+}
+
+// On page load
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded and parsed');
-
-    fetchMembersFromLocalStorage(); // Optionally fetch members on page load
-
+    fetchBooksFromLocalStorage();
 });
