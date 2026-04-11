@@ -1,3 +1,72 @@
 #membersTable {
     background-color: aliceblue;
 }
+/* ========================= */
+/* 📚 SIDEBAR */
+/* ========================= */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background-color: #212529;
+    transform: translateX(-100%); /* hidden by default */
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+/* Sidebar visible */
+.sidebar.active {
+    transform: translateX(0);
+}
+
+/* ========================= */
+/* 📊 MAIN CONTENT */
+/* ========================= */
+.main-content {
+    transition: margin-left 0.3s ease;
+}
+
+/* Shift content when sidebar opens */
+.main-content.shifted {
+    margin-left: 220px;
+}
+
+/* ========================= */
+/* 🎨 NAV LINKS */
+/* ========================= */
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+/* ========================= */
+/* 🔍 SEARCH INPUT */
+/* ========================= */
+#searchInput {
+    border-radius: 6px;
+}
+
+/* ========================= */
+/* 📋 TABLE */
+/* ========================= */
+table {
+    background-color: white;
+}
+
+
+
+/* ========================= */
+/* 📱 RESPONSIVE  */
+/* ========================= */
+@media (max-width: 768px) {
+    .main-content.shifted {
+        margin-left: 0;
+    }
+}
