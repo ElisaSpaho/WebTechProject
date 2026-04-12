@@ -70,3 +70,16 @@ table {
         margin-left: 0;
     }
 }
+
+.card:hover {
+    transform: translateY(-4px);
+    transition: 0.2s ease;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.card-title {
+    font-weight: 600;
+}

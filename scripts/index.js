@@ -1,4 +1,3 @@
-let isCustomerView = false;
 
 // ===============================
 // ADMIN TABLE
@@ -39,89 +38,12 @@ function displayBooksAsTable() {
 }
 
 // ===============================
-// CUSTOMER CARDS
+// SEARCH (ADMIN ONLY)
 // ===============================
-function fetchBooksFromLocalStorage(filter = "") {
-    const books = JSON.parse(localStorage.getItem('books')) || [];
-    const $container = $('#bookCardsContainer');
+$('#searchInput').on('keyup', function () {
 
-    $container.empty();
-
-    const filteredBooks = books.filter(book =>
-        book.bookTitle.toLowerCase().includes(filter) ||
-        book.authorName.toLowerCase().includes(filter) ||
-        book.bookGenre.toLowerCase().includes(filter)
-    );
-
-    if (filteredBooks.length === 0) {
-        $container.html(`
-            <p class="text-center text-muted">
-                No matching books found
-            </p>
-        `);
-        return;
-    }
-
-    filteredBooks.forEach((book) => {
-        const card = `
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5>${book.bookTitle}</h5>
-                        <p><strong>ISBN:</strong> ${book.bookISBN}</p>
-                        <p><strong>Author:</strong> ${book.authorName}</p>
-                        <p><strong>Genre:</strong> ${book.bookGenre}</p>
-                        <p><strong>Price:</strong> ${book.bookPrice} ALL</p>
-                    </div>
-                </div>
-            </div>
-        `;
-        $container.append(card);
-    });
-
-}
-
-// ===============================
-// TOGGLE CUSTOMER VIEW
-// ===============================
-$(document).ready(function () {
-
-    // 🔄 Customer/Admin toggle
-    $('#customerViewBtn').on('click', function () {
-
-        isCustomerView = !isCustomerView;
-
-        if (isCustomerView) {
-            $('#bookTableContainer').addClass('d-none');
-            $('#bookCardsContainer').removeClass('d-none');
-            fetchBooksFromLocalStorage();
-            $(this).text('Admin View');
-        } else {
-            $('#bookCardsContainer').addClass('d-none');
-            $('#bookTableContainer').removeClass('d-none');
-            displayBooksAsTable();
-            $(this).text('Customer View');
-        }
-    });
-
-    // 📌 Sidebar toggle
-    $('#toggleSidebarBtn').on('click', function () {
-    $('#sidebar').toggleClass('active');
-    $('.main-content').toggleClass('shifted');
-});
-
-    // 🔍 SEARCH (👉 ADD THIS PART)
-    $('#searchInput').on('keyup', function () {
-
-        const searchValue = $(this).val().toLowerCase();
-
-        if (isCustomerView) {
-            fetchBooksFromLocalStorage(searchValue);
-        } else {
-            displayBooksAsTable(searchValue);
-        }
-
-    });
+    const searchValue = $(this).val().toLowerCase();
+    displayBooksAsTable(searchValue);
 
 });
 
@@ -152,6 +74,14 @@ function clearAllBooks() {
 }
 
 document.getElementById('clearAllBtn')?.addEventListener('click', clearAllBooks);
+
+// ===============================
+// SIDEBAR TOGGLE (UNCHANGED)
+// ===============================
+$('#toggleSidebarBtn').on('click', function () {
+    $('#sidebar').toggleClass('active');
+    $('.main-content').toggleClass('shifted');
+});
 
 // ===============================
 // LOAD DEFAULT
