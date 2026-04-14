@@ -1,6 +1,7 @@
 #membersTable {
     background-color: aliceblue;
 }
+
 /* ========================= */
 /* 📚 SIDEBAR */
 /* ========================= */
@@ -10,28 +11,20 @@
     left: 0;
     width: 220px;
     height: 100vh;
-    background-color: #212529;
-    transform: translateX(-100%); /* hidden by default */
-    transition: transform 0.3s ease;
+
+    /* 🎀 Pink gradient */
+    background: linear-gradient(180deg, #f9a8d4, #ec4899);
+
     z-index: 1000;
     padding: 1rem;
-}
-
-/* Sidebar visible */
-.sidebar.active {
-    transform: translateX(0);
 }
 
 /* ========================= */
 /* 📊 MAIN CONTENT */
 /* ========================= */
 .main-content {
-    transition: margin-left 0.3s ease;
-}
-
-/* Shift content when sidebar opens */
-.main-content.shifted {
-    margin-left: 220px;
+    margin-left: 220px; /* always shifted */
+    transition: none;
 }
 
 /* ========================= */
@@ -39,11 +32,32 @@
 /* ========================= */
 .nav-link {
     color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: 0.2s;
 }
 
 .nav-link:hover {
-    background-color: #495057;
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Active link (optional but nice) */
+.nav-link.active {
+    background-color: white;
+    color: #ec4899;
+}
+
+/* ========================= */
+/* 🎯 SIDEBAR BUTTON (Customer View) */
+/* ========================= */
+.sidebar .btn-success {
+    background-color: white;
+    color: #ec4899;
+    border: none;
+}
+
+.sidebar .btn-success:hover {
+    background-color: #ffe4f1;
 }
 
 /* ========================= */
@@ -60,17 +74,22 @@ table {
     background-color: white;
 }
 
-
-
 /* ========================= */
-/* 📱 RESPONSIVE  */
+/* 📱 RESPONSIVE */
 /* ========================= */
 @media (max-width: 768px) {
-    .main-content.shifted {
-        margin-left: 0;
+    .sidebar {
+        width: 180px;
+    }
+
+    .main-content {
+        margin-left: 180px;
     }
 }
 
+/* ========================= */
+/* ✨ CARD EFFECTS */
+/* ========================= */
 .card:hover {
     transform: translateY(-4px);
     transition: 0.2s ease;

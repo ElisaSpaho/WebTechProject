@@ -1,7 +1,262 @@
-h1.welcomeCls {
-    color: red;
+/* ===== ROOT COLORS ===== */
+:root {
+  --pink-light: #f9a8d4;
+  --pink-strong: #ec4899;
+  --beige: #f5f5dc;
+  --card: #fffaf5;
+  --text: #374151;
 }
- 
-h1#helloWorld {
-    color: blue;
+
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--beige);
+  color: var(--text);
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background-color: var(--pink-light);
+  color: white;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  padding: 30px;
+}
+
+/* ===== CARD (WRAPPER FOR CONTENT) ===== */
+.card-container {
+  background-color: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* ===== HEADER ===== */
+h1 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* ===== TOP BAR (SEARCH + BUTTONS) ===== */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===== SEARCH INPUT ===== */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-box input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 250px;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--pink-light);
+  box-shadow: 0 0 5px rgba(249,168,212,0.5);
+}
+
+/* ===== BUTTONS ===== */
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+/* Primary (Add Book) */
+.btn-primary {
+  background-color: var(--pink-light);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--pink-strong);
+  transform: translateY(-2px);
+}
+
+/* Secondary (Best Sellers) */
+.btn-secondary {
+  background-color: #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+/* Danger (Delete / Clear) */
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+thead {
+  background-color: var(--pink-light);
+  color: white;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+/* Zebra rows */
+tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Hover effect */
+tr:hover {
+  background-color: #fde2f3;
+}
+
+/* ===== ACTION BUTTONS INSIDE TABLE ===== */
+.action-btn {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+/* Edit */
+.btn-edit {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #2563eb;
+}
+
+/* Delete */
+.btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626;
+}
+
+/* ===== SMALL RESPONSIVE FIX ===== */
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .button-group {
+    justify-content: space-between;
+  }
+}
+
+/* ===== PINK BUTTON VARIANTS ===== */
+
+/* Primary Pink (Add Book, Clear All) */
+.btn-primary {
+  background-color: var(--pink-light) !important;
+  color: white !important;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--pink-strong) !important;
+}
+
+/* Outline Pink (Best Sellers) */
+.btn-secondary {
+  background-color: transparent !important;
+  border: 2px solid var(--pink-light) !important;
+  color: var(--pink-light) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--pink-light) !important;
+  color: white !important;
+}
+
+/* Pink Danger (Delete / Clear All alternative) */
+.btn-danger {
+  background-color: var(--pink-strong) !important;
+  border: none;
+  color: white !important;
+}
+
+.btn-danger:hover {
+  background-color: #db2777 !important;
+}
+/* ===== ADMIN BUTTON (WHITE) ===== */
+.btn-admin {
+  background-color: white;
+  color: #ec4899; /* pink text */
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-admin:hover {
+  background-color: #ffe4f1; /* soft pink */
+  color: #ec4899;
+}
+/* ===== ADMIN BUTTON (WHITE) ===== */
+.btn-admin {
+  background-color: white;
+  color: #ec4899; /* pink text */
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-admin:hover {
+  background-color: #ffe4f1; /* soft pink */
+  color: #ec4899;
+}
+.navbar-brand {
+  color: white !important;
+  font-size: 1.8rem;
+  font-weight: 600;
 }

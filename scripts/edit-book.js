@@ -1,5 +1,6 @@
 $(function() {
     const bookISBN = localStorage.getItem('bookToEditISBN');
+
     if (!bookISBN) {
         alert('No book selected to edit');
         window.location.href = 'index.html';
@@ -15,16 +16,15 @@ $(function() {
         return;
     }
 
-    // Populate the form
+    // ✅ Populate form fields
     $('#bookTitle').val(book.bookTitle);
     $('#bookISBN').val(book.bookISBN);
     $('#authorName').val(book.authorName);
     $('#bookGenre').val(book.bookGenre);
     $('#bookPrice').val(book.bookPrice);
 
-    // Handle form submission
-    $('#editMemberForm').on('submit',function(e){
-
+    // ✅ Handle form submit
+    $('#editMemberForm').on('submit', function(e) {
         e.preventDefault();
 
         book.bookTitle  = $('#bookTitle').val();
@@ -38,7 +38,5 @@ $(function() {
 
         alert('Book updated successfully!');
         window.location.href = 'index.html';
-
     });
-    
 });
