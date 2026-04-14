@@ -9,9 +9,9 @@ function displayBooks(filter = "") {
     $container.empty();
 
     const filtered = books.filter(book =>
-        book.bookTitle.toLowerCase().includes(filter) ||
-        book.authorName.toLowerCase().includes(filter) ||
-        book.bookGenre.toLowerCase().includes(filter)
+        (book.bookTitle || "").toLowerCase().includes(filter) ||
+        (book.authorName || "").toLowerCase().includes(filter) ||
+        (book.bookGenre || "").toLowerCase().includes(filter)
     );
 
     if (filtered.length === 0) {
@@ -22,10 +22,19 @@ function displayBooks(filter = "") {
         `);
         return;
     }
- filtered.forEach(book => {
+
+    filtered.forEach(book => {
+        const image = `https://covers.openlibrary.org/b/isbn/${book.bookISBN}-L.jpg`;
+
         const card = `
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm border-0 h-100 hover-shadow">
+                <img 
+                    src="${image}" 
+                    class="card-img-top"
+                    alt="${book.bookTitle}"
+                    onerror="this.src='https://via.placeholder.com/300x400?text=No+Cover'"
+                >
                 <div class="card-body">
                     <h5 class="card-title">${book.bookTitle}</h5>
                     <p class="mb-1"><strong>Author:</strong> ${book.authorName}</p>
@@ -35,6 +44,7 @@ function displayBooks(filter = "") {
             </div>
         </div>
         `;
+
         $container.append(card);
     });
 }
