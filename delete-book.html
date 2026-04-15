@@ -26,10 +26,13 @@
 
 <h2 class="text-danger">Delete Book</h2>
 <p>Are you sure?</p>
+<p><strong>Title:</strong> <span id="infoTitle"></span></p>
+<p><strong>ISBN:</strong> <span id="infoISBN"></span></p>
+<p><strong>Author:</strong> <span id="infoAuthor"></span></p>
 
 <div class="d-flex justify-content-end gap-2">
 <a href="index.html" class="btn btn-secondary">Cancel</a>
-<button class="btn btn-danger">Delete</button>
+<button id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
 </div>
 
 </div>
@@ -38,7 +41,7 @@
 </div>
 </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="scripts/delete-book.js"></script>
 
 </body>
