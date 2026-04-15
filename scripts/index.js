@@ -1,4 +1,3 @@
-
 // ===============================
 // ADMIN TABLE
 // ===============================
@@ -49,10 +48,8 @@ function displayBooksAsTable(filter = "") {
 // SEARCH (ADMIN ONLY)
 // ===============================
 $('#searchInput').on('keyup', function () {
-
     const searchValue = $(this).val().toLowerCase();
     displayBooksAsTable(searchValue);
-
 });
 
 // ===============================
@@ -84,7 +81,7 @@ function clearAllBooks() {
 document.getElementById('clearAllBtn')?.addEventListener('click', clearAllBooks);
 
 // ===============================
-// SIDEBAR TOGGLE (UNCHANGED)
+// SIDEBAR TOGGLE
 // ===============================
 $('#toggleSidebarBtn').on('click', function () {
     $('#sidebar').toggleClass('active');
