@@ -2,13 +2,21 @@
 // ===============================
 // ADMIN TABLE
 // ===============================
-function displayBooksAsTable() {
+function displayBooksAsTable(filter = "") {
     const books = JSON.parse(localStorage.getItem('books')) || [];
     const $tableBody = $('#bookTableBody');
 
     $tableBody.empty();
 
-    if (books.length === 0) {
+    const search = filter.toLowerCase();
+
+    const filteredBooks = books.filter(book =>
+        `${book.bookTitle} ${book.authorName} ${book.bookGenre}`
+            .toLowerCase()
+            .includes(search)
+    );
+
+    if (filteredBooks.length === 0) {
         $tableBody.html(`
             <tr>
                 <td colspan="6" class="text-center text-muted">
@@ -19,7 +27,7 @@ function displayBooksAsTable() {
         return;
     }
 
-    books.forEach((book) => {
+    filteredBooks.forEach((book) => {
         const row = `
             <tr>
                 <td>${book.bookTitle}</td>
