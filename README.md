@@ -26,17 +26,14 @@ Requires an API key and returns a JSON list of current bestselling books.
 
  ## Project Structure
 project-root/
-│
-├── scripts/          
-├── styles/           
-├── test-data/        
-│   └── isbns.txt     # Sample ISBNs for testing
-│
-├── index.html        
+├── scripts/
+├── styles/
+├── test-data/isbns.txt
+├── index.html
 ├── add-book.html
 ├── edit-book.html
 ├── delete-book.html
-├── customer.html     
+├── customer.html
 ├── bestsellers.html
 
 
