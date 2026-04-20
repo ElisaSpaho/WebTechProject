@@ -16,14 +16,12 @@ $(function() {
         return;
     }
 
-    // ✅ Populate form fields
     $('#bookTitle').val(book.bookTitle);
     $('#bookISBN').val(book.bookISBN);
     $('#authorName').val(book.authorName);
     $('#bookGenre').val(book.bookGenre);
     $('#bookPrice').val(book.bookPrice);
 
-    // ✅ Handle form submit
     $('#editMemberForm').on('submit', function(e) {
         e.preventDefault();
 

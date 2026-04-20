@@ -2,9 +2,6 @@
     background-color: aliceblue;
 }
 
-/* ========================= */
-/* 📚 SIDEBAR */
-/* ========================= */
 .sidebar {
     position: fixed;
     top: 0;
@@ -12,24 +9,17 @@
     width: 220px;
     height: 100vh;
 
-    /* 🎀 Pink gradient */
     background: linear-gradient(180deg, #f9a8d4, #ec4899);
 
     z-index: 1000;
     padding: 1rem;
 }
 
-/* ========================= */
-/* 📊 MAIN CONTENT */
-/* ========================= */
 .main-content {
-    margin-left: 220px; /* always shifted */
+    margin-left: 220px;
     transition: none;
 }
 
-/* ========================= */
-/* 🎨 NAV LINKS */
-/* ========================= */
 .nav-link {
     color: white;
     border-radius: 8px;
@@ -41,15 +31,11 @@
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Active link (optional but nice) */
 .nav-link.active {
     background-color: white;
     color: #ec4899;
 }
 
-/* ========================= */
-/* 🎯 SIDEBAR BUTTON (Customer View) */
-/* ========================= */
 .sidebar .btn-success {
     background-color: white;
     color: #ec4899;
@@ -60,23 +46,14 @@
     background-color: #ffe4f1;
 }
 
-/* ========================= */
-/* 🔍 SEARCH INPUT */
-/* ========================= */
 #searchInput {
     border-radius: 6px;
 }
 
-/* ========================= */
-/* 📋 TABLE */
-/* ========================= */
 table {
     background-color: white;
 }
 
-/* ========================= */
-/* 📱 RESPONSIVE */
-/* ========================= */
 @media (max-width: 768px) {
     .sidebar {
         width: 180px;
@@ -87,9 +64,6 @@ table {
     }
 }
 
-/* ========================= */
-/* ✨ CARD EFFECTS */
-/* ========================= */
 .card:hover {
     transform: translateY(-4px);
     transition: 0.2s ease;

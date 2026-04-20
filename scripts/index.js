@@ -1,6 +1,3 @@
-// ===============================
-// ADMIN TABLE
-// ===============================
 function displayBooksAsTable(filter = "") {
     const books = JSON.parse(localStorage.getItem('books')) || [];
     const $tableBody = $('#bookTableBody');
@@ -44,33 +41,21 @@ function displayBooksAsTable(filter = "") {
     });
 }
 
-// ===============================
-// SEARCH (ADMIN ONLY)
-// ===============================
 $('#searchInput').on('keyup', function () {
     const searchValue = $(this).val().toLowerCase();
     displayBooksAsTable(searchValue);
 });
 
-// ===============================
-// EDIT
-// ===============================
 function editBook(bookISBN) {
     localStorage.setItem('bookToEditISBN', bookISBN);
     window.location.href = 'edit-book.html';
 }
 
-// ===============================
-// DELETE
-// ===============================
 function prepareDeleteBook(bookISBN) {
     localStorage.setItem('bookToDeleteISBN', bookISBN);
     window.location.href = 'delete-book.html';
 }
 
-// ===============================
-// CLEAR ALL
-// ===============================
 function clearAllBooks() {
     if (confirm("Are you sure you want to delete ALL books?")) {
         localStorage.removeItem('books');
@@ -80,17 +65,11 @@ function clearAllBooks() {
 
 document.getElementById('clearAllBtn')?.addEventListener('click', clearAllBooks);
 
-// ===============================
-// SIDEBAR TOGGLE
-// ===============================
 $('#toggleSidebarBtn').on('click', function () {
     $('#sidebar').toggleClass('active');
     $('.main-content').toggleClass('shifted');
 });
 
-// ===============================
-// LOAD DEFAULT
-// ===============================
 $(function () {
     displayBooksAsTable();
 });

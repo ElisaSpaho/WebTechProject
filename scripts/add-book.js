@@ -1,6 +1,6 @@
 function saveBookInfo(event) {
 
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     let bookTitle      = $('#bookTitle').val();
     let bookISBN       = $('#bookISBN').val()?.trim();
@@ -28,7 +28,6 @@ function saveBookInfo(event) {
     window.location.href = 'index.html';
 
 }
-//when the form is submitted, your saveBookInfo function is called — using jQuery
 $(function() {
-    $('#addBookForm').on('submit', saveBookInfo); // make sure your form has id="addBookForm"
+    $('#addBookForm').on('submit', saveBookInfo);
 });
