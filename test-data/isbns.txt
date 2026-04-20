@@ -1,0 +1,31 @@
+# Sample Books for testing (Open Library covers)
+
+Harry Potter and the Goblet of Fire – 9780439139601 – J.K. Rowling – 1200 ALL
+The Great Gatsby – 9780743273565 – F. Scott Fitzgerald – 900 ALL
+To Kill a Mockingbird – 9780061120084 – Harper Lee – 1000 ALL
+The Catcher in the Rye – 9780316769488 – J.D. Salinger – 950 ALL
+1984 – 9780451524935 – George Orwell – 1100 ALL
+The Hobbit – 9780547928227 – J.R.R. Tolkien – 1300 ALL
+The Alchemist – 9780062315007 – Paulo Coelho – 800 ALL
+The Road – 9780307277671 – Cormac McCarthy – 1050 ALL
+Pride and Prejudice – 9780141439518 – Jane Austen – 850 ALL
+The Odyssey – 9780140449136 – Homer – 1150 ALL
+The Da Vinci Code – 9780307474278 – Dan Brown – 1200 ALL
+The Hunger Games – 9780439023528 – Suzanne Collins – 1100 ALL
+It – 9781501142970 – Stephen King – 1300 ALL
+The Fellowship of the Ring – 9780261103573 – J.R.R. Tolkien – 1250 ALL
+The Book Thief – 9780375842207 – Markus Zusak – 1000 ALL
+Divergent – 9780062024039 – Veronica Roth – 950 ALL
+A Game of Thrones – 9780553593716 – George R.R. Martin – 1400 ALL
+And the Mountains Echoed – 9781594631931 – Khaled Hosseini – 1050 ALL
+The Fault in Our Stars – 9780142424179 – John Green – 900 ALL
+The Lightning Thief – 9780786838653 – Rick Riordan – 950 ALL
+Murder on the Orient Express – 9780062073488 – Agatha Christie – 900 ALL
+The Brothers Karamazov – 9780140449136 – Fyodor Dostoevsky – 1200 ALL
+The Old Man and the Sea – 9780684801223 – Ernest Hemingway – 1000 ALL
+Frankenstein – 9780486282114 – Mary Shelley – 800 ALL
+Dracula – 9780486411095 – Bram Stoker – 850 ALL
+The Picture of Dorian Gray – 9780141439570 – Oscar Wilde – 900 ALL
+Sherlock Holmes: The Adventures of Sherlock Holmes – 9780141036137 – Arthur Conan Doyle – 950 ALL
+Jane Eyre – 9780141441146 – Charlotte Brontë – 1000 ALL
+Wuthering Heights – 9780141439556 – Emily Brontë – 950 ALL 
