@@ -25,6 +25,7 @@ Does not require an API key.It works by using the ISBN in a URL to directly retu
 Requires an API key and returns a JSON list of current bestselling books.
 
  ## Project Structure
+ ```
 project-root/
 ├── scripts/
 ├── styles/
@@ -35,7 +36,7 @@ project-root/
 ├── delete-book.html
 ├── customer.html
 ├── bestsellers.html
-
+```
 
 ## How to use
 
