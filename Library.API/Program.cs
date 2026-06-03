@@ -1,31 +1,53 @@
 using Microsoft.EntityFrameworkCore;
 using Library.API.Data;
+using Library.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Add services to the container
-builder.Services.AddOpenApi();
-builder.Services.AddControllers(); // Required to find your BooksController
+// Database
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    ));
 
-// 2. Register your PostgreSQL Database Context
-builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseNpgsql("Host=localhost; Port=5432; Database=WebTechProject; Username=postgres; Password=Eld@2006")); 
+// Services
+builder.Services.AddScoped<IBookService, BookService>();
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+// Controllers
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// 3. Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
+// Auto-migrate database
+using (var scope = app.Services.CreateScope())
 {
-    app.MapOpenApi();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.ToString());
+    }
 }
 
-app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 
-// 4. Serve your HTML, CSS, and JS frontend files from wwwroot
-app.UseDefaultFiles();
-app.UseStaticFiles();
+app.UseAuthorization();
 
-// 5. Map your API controller endpoints so your frontend can call them
 app.MapControllers();
 
-app.Run(); 
+app.Run();

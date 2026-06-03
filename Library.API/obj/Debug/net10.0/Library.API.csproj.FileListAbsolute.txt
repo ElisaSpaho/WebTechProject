@@ -27,6 +27,9 @@ C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\Mono.Text
 C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\Newtonsoft.Json.dll
 C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\Npgsql.dll
 C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\System.CodeDom.dll
 C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\System.Composition.AttributedModel.dll
 C:\Users\elisa\WebProject\WebTechProject\Library.API\bin\Debug\net10.0\System.Composition.Convention.dll
