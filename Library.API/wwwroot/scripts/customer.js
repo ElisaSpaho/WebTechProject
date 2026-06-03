@@ -1,20 +1,29 @@
-function getBooks() {
-    return JSON.parse(localStorage.getItem('books')) || [];
+const API_URL = "/api/books";
+
+async function getBooks(search = "") {
+    try {
+        const response = await fetch(`${API_URL}?search=${encodeURIComponent(search)}`);
+
+        if (!response.ok) {
+            console.error("Failed to load books:", await response.text());
+            return [];
+        }
+
+        return await response.json();
+
+    } catch (error) {
+        console.error("Error connecting to API:", error);
+        return [];
+    }
 }
 
-function displayBooks(filter = "") {
-    const books = getBooks();
+async function displayBooks(filter = "") {
+    const books = await getBooks(filter);
     const $container = $('#bookCardsContainer');
 
     $container.empty();
 
-    const filtered = books.filter(book =>
-        (book.bookTitle || "").toLowerCase().includes(filter) ||
-        (book.authorName || "").toLowerCase().includes(filter) ||
-        (book.bookGenre || "").toLowerCase().includes(filter)
-    );
-
-    if (filtered.length === 0) {
+    if (books.length === 0) {
         $container.html(`
             <div class="col-12 text-center text-muted py-5">
                 <h5>No books found 📚</h5>
@@ -23,7 +32,7 @@ function displayBooks(filter = "") {
         return;
     }
 
-    filtered.forEach(book => {
+    books.forEach(book => {
         const image = `https://covers.openlibrary.org/b/isbn/${book.bookISBN}-L.jpg`;
 
         const card = `

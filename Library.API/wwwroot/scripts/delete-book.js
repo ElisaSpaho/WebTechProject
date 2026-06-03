@@ -1,42 +1,69 @@
-function loadBookInfo() {
-    const bookISBN = localStorage.getItem('bookToDeleteISBN')?.trim();
+const API_URL = "/api/books";
 
-    if (!bookISBN) {
-        alert('No book selected for deletion');
-        window.location.href = 'index.html';
+function getBookIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("id");
+}
+
+async function loadBookInfo() {
+    const bookId = getBookIdFromUrl();
+
+    if (!bookId) {
+        alert("No book selected for deletion.");
+        window.location.href = "index.html";
         return;
     }
 
-    const books = JSON.parse(localStorage.getItem('books')) || [];
-    const book = books.find(b => b.bookISBN === bookISBN);
+    try {
+        const response = await fetch(`${API_URL}/${bookId}`);
 
-    if (!book) {
-        alert('Book not found !');
-        window.location.href = 'index.html';
+        if (!response.ok) {
+            alert("Book not found.");
+            window.location.href = "index.html";
+            return;
+        }
+
+        const book = await response.json();
+
+        $('#infoTitle').text(book.bookTitle);
+        $('#infoISBN').text(book.bookISBN);
+        $('#infoAuthor').text(book.authorName);
+
+    } catch (error) {
+        console.error("Error loading book:", error);
+        alert("Error connecting to server.");
+    }
+}
+
+async function confirmDelete() {
+    const bookId = getBookIdFromUrl();
+
+    if (!bookId) {
+        alert("No book selected for deletion.");
         return;
     }
 
-    // Display book info
-    $('#infoTitle').text(book.bookTitle);
-    $('#infoISBN').text(book.bookISBN);
-    $('#infoAuthor').text(book.authorName);
+    try {
+        const response = await fetch(`${API_URL}/${bookId}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            alert("Failed to delete book.");
+            console.error(await response.text());
+            return;
+        }
+
+        alert("Book deleted successfully!");
+        window.location.href = "index.html";
+
+    } catch (error) {
+        console.error("Error deleting book:", error);
+        alert("Error connecting to server.");
+    }
 }
 
-function confirmDelete() {
-    const bookISBN = localStorage.getItem('bookToDeleteISBN');
-    let books = JSON.parse(localStorage.getItem('books')) || [];
-
-    const updatedBooks = books.filter(b => b.bookISBN !== bookISBN);
-
-
-    localStorage.setItem('books', JSON.stringify(updatedBooks));
-    localStorage.removeItem('bookToDeleteISBN');
-
-    alert('Book deleted successfully!');
-    window.location.href = 'index.html';
-}
-
-$(function() {
+$(function () {
     loadBookInfo();
 
     $('#confirmDeleteBtn').on('click', confirmDelete);

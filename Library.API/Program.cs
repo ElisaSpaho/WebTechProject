@@ -44,10 +44,16 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+// Serve files from wwwroot
+app.UseStaticFiles();
+
+// CORS
 app.UseCors("AllowAll");
 
+// Authorization
 app.UseAuthorization();
 
+// Map API controllers
 app.MapControllers();
 
 app.Run();

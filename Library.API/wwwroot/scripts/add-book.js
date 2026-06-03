@@ -1,35 +1,45 @@
-function saveBookInfo(event) {
+const API_URL = "/api/books";
+
+async function saveBookInfo(event) {
 
     event.preventDefault();
 
-    let bookTitle      = $('#bookTitle').val();
-    let bookISBN       = $('#bookISBN').val()?.trim();
-    let authorName     = $('#authorName').val();
-    let bookGenre      = $('#bookGenre').val();
-    let bookPrice      = $('#bookPrice').val();
-
-    console.log('Book Title:', bookTitle);
-
     let newBook = {
-        bookTitle:          bookTitle,
-        bookISBN:           bookISBN,
-        authorName:         authorName,
-        bookGenre:          bookGenre,
-        bookPrice:          bookPrice,
+        bookTitle: $('#bookTitle').val(),
+        bookISBN: $('#bookISBN').val()?.trim(),
+        authorName: $('#authorName').val(),
+        bookGenre: $('#bookGenre').val(),
+        bookPrice: Number($('#bookPrice').val())
     };
 
-    let books = JSON.parse(localStorage.getItem('books')) || [];
-    books.push(newBook);
-    localStorage.setItem('books', JSON.stringify(books));
+    console.log("Sending book:", newBook);
 
-    console.log('New Book Object:', newBook);
+    try {
 
-    alert('Book information saved successfully!');
-    window.location.href = 'index.html';
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newBook)
+        });
 
+        if (!response.ok) {
+            const error = await response.text();
+            console.error(error);
+            alert("Failed to save book.");
+            return;
+        }
+
+        alert("Book saved successfully!");
+        window.location.href = "index.html";
+
+    } catch (error) {
+        console.error(error);
+        alert("Error connecting to server.");
+    }
 }
-$(function() {
+
+$(function () {
     $('#addBookForm').on('submit', saveBookInfo);
 });
-
-
